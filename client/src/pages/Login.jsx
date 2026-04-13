@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login as loginRequest } from '../services/authService';
 import { useAuth } from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const navigation = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -33,6 +34,7 @@ const Login = () => {
 
       login(response.data.user);
       toast.success('Login successful.');
+      navigation('/');
     } catch (err) {
       toast.error(err?.response?.data?.error || err?.response?.data?.message || 'Unable to login. Please try again.');
     } finally {
