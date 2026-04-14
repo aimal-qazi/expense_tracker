@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import ProtectedRoute from './routes/ProtectedRoute';
 import AuthLayout from './layouts/AuthLayout';
 import Dashboard from './pages/Dashboard';
+import AddTransaction from './pages/AddTransaction';
+import Transactions from './pages/Transactions';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route element={<AuthLayout />}>
             <Route path='/' element={<Dashboard />} />          
+            <Route path='/transactions' element={<Transactions />} />
+            <Route path='/add' element={<AddTransaction />} />
           </Route>
         </Route>
       </Routes>
